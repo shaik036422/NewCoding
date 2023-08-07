@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="All Resevation records">
+        <div class="slds-p-around_medium">
+            <lightning-layout>
+                <lightning-layout-item size="2" padding="around-small">
+                   <lightning-combobox name="filterBy" value={filterBy} label="Filter By"
+                   options={FilterByOptions} onchange={filterbyHandler}></lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" padding="around-small">
+                    <lightning-input type="text" label="Filter" onkeyup={filterHandler}></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        
+
+        <table>
+            <thead>
+                <tr>
+                    <template for:each={headings} for:item="heading">
+                        <th key={heading}>{heading}</th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template if:true={visibleRates}>
+                <template for:each={visibleRates} for:item="resr">
+                    <tr key={resr.Id}>
+                            <td>{resr.Name}</td>
+                            <td>{resr.Customer_Name__c}</td>
+                            <td>{resr.Reservation_Status__c}</td>
+                            <!--<td>{resr.Hotel_Name__c}</td>-->
+                             <td><lightning-button label="Update Record" variant="destructive" value={resr.Id} onclick={publishMessage}></lightning-button></td>                        
+                        </tr>        
+                </template>
+            </template>
+            </tbody> 
+        </table>
+        <div slot="footer" class="slds-var-m-horizontal_medium">
+            <c-pagination-component records={filteredData} onupdate={updateDataHandler}></c-pagination-component>
+        </div>
+    </div>
+    </lightning-card>
+</template>
