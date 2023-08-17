@@ -1,0 +1,39 @@
+<template>
+    <lightning-card>
+        <lightning-input class="search" label="Enter Hotel/City Name"
+        onchange={changeHandler} type="search" value={cityNameSrch}></lightning-input>
+        
+    </lightning-card>
+    <lightning-card>
+        <lightning-layout multiple-rows>
+   <template if:true={serchvalue}>
+    <template for:each={searchedres} for:item="hotels">  
+    <lightning-layout-item padding="around-small" size="3" key={hotels.Name} >
+                <div class="slds-box slds-p-around_medium slds-text-align_center">
+                    <img src={hotels.hotel_image__c}>
+                    <div class="slds-text-heading_small slds-p-vertical_medium"><strong>{hotels.Name}</strong></div>
+                    <div><strong>Name -{hotels.Name}</strong></div>
+                    <div><strong>City- {hotels.City__c}</strong></div>
+               <lightning-button label="Know more" variant="Brand" class="slds-m-left_x-small"></lightning-button>
+                </div>
+            </lightning-layout-item>
+</template>
+   </template>
+</lightning-layout>
+<lightning-layout multiple-rows>
+    <template if:false={serchvalue}>
+     <template for:each={hotelimages} for:item="hotel">  
+     <lightning-layout-item padding="around-small" size="3" key={hotel.Name} >
+                 <div class="slds-box slds-p-around_medium slds-text-align_center">
+                     <img src={hotel.hotel_image__c}>
+                     <div class="slds-text-heading_small slds-p-vertical_medium"><strong>{hotel.Name}</strong></div>
+                     <div><strong>Name -{hotel.Name}</strong></div>
+                     <div><strong>City- {hotel.City__c}</strong></div>
+                <lightning-button label="Know more" variant="Brand" class="slds-m-left_x-small"></lightning-button>
+                 </div>
+             </lightning-layout-item>
+ </template>
+    </template>
+ </lightning-layout>
+    </lightning-card>
+</template>
