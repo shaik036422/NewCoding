@@ -1,0 +1,27 @@
+<template>
+<lightning-card>
+    <ul>
+        <li class="slds-is-active"><a class="active" href="#home" onclick={clickme2}  >Hotels</a></li>
+        <li><a href="#news">Special Offers</a></li>
+        <li><a href="#contact">Other offers &services</a></li>
+        <li><a href="#about" onclick={clickmeAuth}>Authorised users</a></li>
+      </ul>
+
+
+      <!--<template if:true={currentContent}>
+        <h1>Welcom to Our Site</h1>
+    </template>-->
+   
+
+
+
+      <template if:true={tutorialValue}>
+        <c-hotel-images></c-hotel-images>
+    </template>
+   
+    <template if:true={integrationValue}>
+     <c-rate-types-configuration-screen></c-rate-types-configuration-screen>
+    </template>
+  
+</lightning-card>
+</template>
